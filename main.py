@@ -29,14 +29,9 @@ def parens_match_iterative(mylist):
             state = parens_update(item, state)  # Apply to each item and the current state
         return state
     return iterate(parens_update, 0, mylist) == 0
-# def iterate(update, initial, mylist):
-#     state = initial
-#     for item in mylist:
-#         state = parens_update(item, state)  # Apply update_func to each item and the current state
-#     return state
 
-# def plus(x, y):
-#     return x + y
+def plus(x, y):
+    return x + y
 
 def reduce(f, id_, a):
     if len(a) == 0:
@@ -101,8 +96,7 @@ def parens_match_scan(mylist):
     """
     ###TODO
     mapped_list = list(map(paren_map, mylist))
-    history, last = scan(lambda x, y: x+y, 0, mapped_list)
-    # history, last = scan(plus, 0, list(map(paren_map, mylist)))
+    history, last = scan(plus, 0, list(map(paren_map, mylist)))
     return last == 0 and reduce(min_f, 0, history) >= 0
     ###
 
