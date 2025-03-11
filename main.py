@@ -22,11 +22,15 @@ def parens_match_iterative(mylist):
     >>>parens_match_iterative(['('])
     False
     """
-    ### TODO
+    # def iterate(f, initial, mylist):
+    #     state = initial
+    #     for item in mylist:
+    #         state = f(state, item)  # Apply to each item and the current state
+    #     return state
     def iterate(parens_update, initial, mylist):
         state = initial
         for item in mylist:
-            state = parens_update(item, state)  # Apply to each item and the current state
+            state = parens_update(state, item)  # Apply to each item and the current state
         return state
     return iterate(parens_update, 0, mylist) == 0
 
@@ -71,7 +75,11 @@ def parens_update(current_output, next_input):
         return current_output
     ###
 
-
+# def iterate(parens_update, initial, mylist):
+#     state = initial
+#     for item in mylist:
+#         state = parens_update(state, item)  # Apply to each item and the current state
+#     return state
 
 
 
@@ -94,8 +102,6 @@ def parens_match_scan(mylist):
     False
     
     """
-    ###TODO
-    mapped_list = list(map(paren_map, mylist))
     history, last = scan(plus, 0, list(map(paren_map, mylist)))
     return last == 0 and reduce(min_f, 0, history) >= 0
     ###
@@ -167,7 +173,6 @@ def parens_match_dc_helper(mylist):
       L is the number of unmatched left parentheses. This output is used by 
       parens_match_dc to return the final True or False value
     """
-    ###TODO
     # Base cases
     if len(mylist) == 0:
         return [0,0]

@@ -2,7 +2,7 @@ from main import *
 
 #### Iterative solution test
 def test_parens_match_iterative():
-    assert test_parens_match_iterative(['(', ')']) == True
+    assert parens_match_iterative(['(', ')']) == True
     assert parens_match_iterative(['(']) == False
     assert parens_match_iterative([')']) == False
     assert parens_match_iterative(['(', 'a', ')', '(', ')']) == True
