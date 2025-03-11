@@ -1,8 +1,8 @@
-from main.py import *
+from main import *
 
 #### Iterative solution test
 def test_parens_match_iterative():
-    assert parens_match_iterative(['(', ')']) == True
+    assert test_parens_match_iterative(['(', ')']) == True
     assert parens_match_iterative(['(']) == False
     assert parens_match_iterative([')']) == False
     assert parens_match_iterative(['(', 'a', ')', '(', ')']) == True
@@ -32,4 +32,4 @@ def test_parens_match_dc():
     assert parens_match_dc(['(',  '(', '(', ')', ')', ')']) == True
     assert parens_match_dc(['(', '(', ')']) == False
     assert parens_match_dc(['(', 'a', ')', ')', '(']) == False
-    assert parens_match_dc([]) == True 
+    assert parens_match_dc([]) == True

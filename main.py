@@ -23,8 +23,31 @@ def parens_match_iterative(mylist):
     False
     """
     ### TODO
+    def iterate(parens_update, initial, mylist):
+        state = initial
+        for item in mylist:
+            state = parens_update(item, state)  # Apply to each item and the current state
+        return state
     return iterate(parens_update, 0, mylist) == 0
+# def iterate(update, initial, mylist):
+#     state = initial
+#     for item in mylist:
+#         state = parens_update(item, state)  # Apply update_func to each item and the current state
+#     return state
+
+# def plus(x, y):
+#     return x + y
+
+def reduce(f, id_, a):
+    if len(a) == 0:
+        return id_
+    elif len(a) == 1:
+        return a[0]
+    else:
+        return f(reduce(f, id_, a[:len(a) // 2]), reduce(f, id_, a[len(a) // 2:]))
     ###
+
+
 
 
 def parens_update(current_output, next_input):
@@ -39,7 +62,7 @@ def parens_update(current_output, next_input):
     Returns:
       the updated value of `current_output`
     """
-    ###TODO
+
     if current_output == -math.inf:  # in an invalid state; carry it forward
         return current_output
     if next_input == '(':            # new open parens 
@@ -77,7 +100,9 @@ def parens_match_scan(mylist):
     
     """
     ###TODO
-    history, last = scan(plus, 0, list(map(paren_map, mylist)))
+    mapped_list = list(map(paren_map, mylist))
+    history, last = scan(lambda x, y: x+y, 0, mapped_list)
+    # history, last = scan(plus, 0, list(map(paren_map, mylist)))
     return last == 0 and reduce(min_f, 0, history) >= 0
     ###
 
@@ -159,6 +184,7 @@ def parens_match_dc_helper(mylist):
             return (1, 0) # one unmatched )    
         else:
             return (0, 0)
+
     i,j = parens_match_dc_helper(mylist[:len(mylist)//2])
     k,l = parens_match_dc_helper(mylist[len(mylist)//2:])
     # Combination:
