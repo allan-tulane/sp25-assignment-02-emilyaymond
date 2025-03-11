@@ -11,6 +11,7 @@ def test_parens_match_iterative():
     assert parens_match_iterative(['(', 'a', ')', ')', '(']) == False
     assert parens_match_iterative([]) == True
 
+
 #### Scan solution test
 def test_parens_match_scan():
     assert parens_match_scan(['(', ')']) == True
